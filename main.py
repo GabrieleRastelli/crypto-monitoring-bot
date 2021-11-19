@@ -35,21 +35,6 @@ def callback_query(call):
         sent = bot.send_message(call.message.chat.id, "Insert the name of the crypto you would like monitor.")
         bot.register_next_step_handler(sent, commands_impl.save_crypto)
 
-    elif call.data == "cb_oneh":
-        #TODO
-        return
-
-    elif call.data == "cb_sixh":
-        # TODO
-        return
-
-    elif call.data == "cb_twentyfourh":
-        # TODO
-        return
-
-    elif call.data == "cb_never":
-        bot.send_message(call.message.chat.id, "Okay, no problem!")
-
 
 bot.polling()
 

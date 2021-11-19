@@ -16,14 +16,24 @@ class MessageFormatter:
         symbol = json_string["symbol"]
         rank = str(json_string["rank"])
         price_usd = json_string["price_usd"]
-        price_eur = str(self.converter.convert(float(price_usd), 'USD', 'EUR'))
+        try:
+            price_eur = str(self.converter.convert(float(price_usd), 'USD', 'EUR'))
+        except ValueError:
+            price_eur = price_usd
+
         market_cap_usd = json_string["market_cap_usd"]
+        try:
+            market_cap_eur = str(self.converter.convert(float(json_string["market_cap_usd"]), 'USD', 'EUR'))
+        except ValueError:
+            market_cap_eur = market_cap_usd
+
         formatted_message="name: "+name+ \
                           "\nsymbol: " + symbol + \
                           "\nrank: " + rank + \
                           "\nprice_usd: " + price_usd + \
                           "\nprice_eur: " + price_eur + \
-                          "\nmarket_cap_usd: " + market_cap_usd + '\n\n'
+                          "\nmarket_cap_usd: " + market_cap_usd + \
+                          "\nmarket_cap_eur: " + market_cap_eur + '\n\n'
 
         return formatted_message
 

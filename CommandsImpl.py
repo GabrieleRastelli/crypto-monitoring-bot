@@ -59,16 +59,11 @@ class CommandsImpl:
         bot.send_message(message.chat.id, msg_to_send)
 
     def save_crypto(self, message):
-        bot.send_message(message.chat.id, 'Saving crypto...')
+        bot.send_message(message.chat.id, 'Saving crypto..')
         crypto_searched = my_coinlore_client.get_crypto_by_name(message.text)
         if (crypto_searched != None):
             crypto_id = json.loads(crypto_searched)["id"]
             cache_manager.add_watched_crypto_for_user(message.chat.id, crypto_id)
-            bot.send_message(message.chat.id,
-                             'How often would you like to be sent a message with crypto\'s informations?',
-                             reply_markup=self.markup_utils.gen_markup(2,
-                                                                       {"Every 1 h": "cb_oneh", "Every 6 h": "cb_sixh",
-                                                                        "Every 24 h": "cb_twentyfourh",
-                                                                        "Never": "cb_never"}))
+            bot.send_message(message.chat.id, 'Crypto saved!')
         else:
             bot.send_message(message.chat.id, 'Crypto not found. Cannot save crypto.')
