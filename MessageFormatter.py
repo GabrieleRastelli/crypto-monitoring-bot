@@ -27,13 +27,13 @@ class MessageFormatter:
         except ValueError:
             market_cap_eur = market_cap_usd
 
-        formatted_message="name: "+name+ \
+        formatted_message="name: *" + name + "*" \
                           "\nsymbol: " + symbol + \
                           "\nrank: " + rank + \
-                          "\nprice_usd: " + price_usd + \
-                          "\nprice_eur: " + price_eur + \
-                          "\nmarket_cap_usd: " + market_cap_usd + \
-                          "\nmarket_cap_eur: " + market_cap_eur + '\n\n'
+                          "\nprice usd: " + price_usd + \
+                          "\nprice eur: " + price_eur + \
+                          "\nmarket cap usd: " + market_cap_usd + \
+                          "\nmarket cap eur: " + market_cap_eur + '\n\n'
 
         return formatted_message
 
