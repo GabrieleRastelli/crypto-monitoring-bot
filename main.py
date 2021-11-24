@@ -28,7 +28,8 @@ def callback_query(call):
     if call.data == "cb_monitored":
         commands_impl.send_monitored_cryptos(call.message)
     elif call.data == "cb_search":
-        sent = bot.send_message(call.message.chat.id, "Insert the name of the crypto you would like to know more about.")
+        sent = bot.send_message(call.message.chat.id,
+                                "Insert the name of the crypto you would like to know more about.")
         bot.register_next_step_handler(sent, commands_impl.search_crypto)
 
     elif call.data == "cb_add_crypto":
@@ -36,6 +37,4 @@ def callback_query(call):
         bot.register_next_step_handler(sent, commands_impl.save_crypto)
 
 
-bot.polling()
-
-
+bot.infinity_polling()
